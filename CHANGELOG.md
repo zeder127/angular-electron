@@ -1,3 +1,5 @@
+test
+
 ## 5.1.0 (2018-11-30)
 
 * fix/ typo Angular 7 ([fde371f](https://github.com/maximegris/angular-electron/commit/fde371f))
