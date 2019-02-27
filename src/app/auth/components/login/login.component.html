@@ -1,0 +1,21 @@
+<p>
+  Login
+</p>
+
+<p>
+  Mobile: <input class="" type="text" [(ngModel)]="username"/>
+</p>
+<p>
+  Password: <input class="" type="password" [(ngModel)]="password"/>
+</p>
+<p>
+  Code: <input class="" type="text" [(ngModel)]="imageCode"/>
+  <img *ngIf="randomImgUrl" [src]="randomImgUrl">
+</p>
+
+<p>
+  <button (click)="login()">Login</button>
+  
+
+  
+</p>

@@ -1,11 +1,17 @@
 import { HomeComponent } from './components/home/home.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { WeixinComponent } from './components/weixin/weixin.component';
+import { LoginComponent } from './auth/components/login/login.component';
 
 const routes: Routes = [
     {
+        path: 'login',
+        component: LoginComponent
+    },
+    {
         path: '',
-        component: HomeComponent
+        component: WeixinComponent
     }
 ];
 
