@@ -1,0 +1,35 @@
+<p>
+ Products to import 
+</p>
+<p>
+  选择聊天记录：<input type="file" (change)="wechatFileChanged($event)">
+</p>
+<p *ngIf="products">
+  <button (click)="importProducts(products)">
+    <span *ngIf="!isImporting">导入{{products.length}}个商品</span>
+    <span *ngIf="isImporting">
+      <img src="../../../../assets/loading.gif" alt="">
+      导入/{{products.length}}个商品
+    </span>
+  </button>
+</p>
+<!-- <p>
+  选择聊天图片文件夹：<input type="file" (change)="imageFileChanged($event)">
+  {{wechatImagesPath}}
+</p> -->
+<table>
+  <tr>
+    <td>分类</td><td>名称</td><td>介绍</td><td>价格</td><td>原价</td><td>状态</td><td>库存</td><td>图片</td>
+  </tr>
+  <tr *ngFor="let product of products">
+    <td>{{product.categoryId}}</td>
+    <td>{{product.name}}</td>
+    <td>{{product.content}}</td>
+    <td>{{product.minPrice}}</td>
+    <td>{{product.originalPrice}}</td>
+    <td>{{product.status}}</td>
+    <td>{{product.stores}}</td>
+    <td>{{product.pics}}</td>
+  </tr>
+</table>
+

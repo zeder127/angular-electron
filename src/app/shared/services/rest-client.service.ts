@@ -10,13 +10,28 @@ const baseUrl = "https://user.api.it120.cc";
 })
 export class RestClientService {
 
+  private _xToken: string;
+  
   constructor(private _httpClient: HttpClient) { }
+  
+  set xToken(token: string){
+    this._xToken = token;
+  }
 
   public get(url: string, options?: RequestOptions): Observable<any> {
-    return this._httpClient.get(baseUrl + url, options as Object);      
+    
+    return this._httpClient.get(baseUrl + url, this.mergeOptions(options) as Object);      
   }
 
   public post(url: string, body: Object, options?: RequestOptions): Observable<Object> {
-    return this._httpClient.post(baseUrl + url, body, options as Object);      
+    return this._httpClient.post(baseUrl + url, body, this.mergeOptions(options) as Object);      
+  }
+
+  private mergeOptions(options: RequestOptions){
+    let result: RequestOptions;
+    result = options ? options : {};    
+    if(result.headers && this._xToken)   
+      result.headers = result.headers.set('X-Token', this._xToken);
+    return result;
   }
 }

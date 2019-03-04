@@ -22,6 +22,7 @@ import { WeixinComponent } from './components/weixin/weixin.component';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from './shared/shared.module';
 import { AuthModule } from './auth/auth.module';
+import { ProductionModule } from './production/production.module';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -40,7 +41,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    AppRoutingModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -49,7 +49,9 @@ export function HttpLoaderFactory(http: HttpClient) {
       }
     }),
     SharedModule.forRoot(),
-    AuthModule
+    AuthModule,
+    ProductionModule,
+    AppRoutingModule
   ],
   providers: [ElectronService],
   bootstrap: [AppComponent]

@@ -20,12 +20,12 @@ export class WeixinComponent implements OnInit {
   constructor(private httpClient: HttpClient) { }
 
   ngOnInit() {
-    this.httpClient.get("./assets/chat.json/")
-    .subscribe((products:Message[])=>{
-      this.messages = products.sort((a, b)=>{
-        return Number.parseInt(b.MesLocalID) - Number.parseInt(a.MesLocalID);
-      });
-    })
+    // this.httpClient.get("./assets/chat.json/")
+    // .subscribe((products:Message[])=>{
+    //   this.messages = products.sort((a, b)=>{
+    //     return Number.parseInt(b.MesLocalID) - Number.parseInt(a.MesLocalID);
+    //   });
+    // })
   }
 
   // isImageMessage(message: Message): boolean {
