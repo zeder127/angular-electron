@@ -1,0 +1,1 @@
+git config --global http.proxy http://proxy.diamant-software.de:8080
