@@ -1,35 +1,53 @@
 <p>
  Products to import 
 </p>
+<button (click)="deleteAll()">delete</button>>
 <p>
   选择聊天记录：<input type="file" (change)="wechatFileChanged($event)">
 </p>
-<p *ngIf="products">
-  <button (click)="importProducts(products)">
-    <span *ngIf="!isImporting">导入{{products.length}}个商品</span>
-    <span *ngIf="isImporting">
-      <img src="../../../../assets/loading.gif" alt="">
-      导入/{{products.length}}个商品
-    </span>
-  </button>
+<p>
+  选择聊天图片：<input type="file" (change)="imageFileChanged($event)" multiple>
 </p>
-<!-- <p>
-  选择聊天图片文件夹：<input type="file" (change)="imageFileChanged($event)">
-  {{wechatImagesPath}}
-</p> -->
+<p *ngIf="products">
+    <button (click)="importProducts(products)">
+      <span *ngIf="!isImporting && !isFinished">导入{{products.length}}个商品</span>
+      <span *ngIf="isImporting && !isFinisched">
+        <img src="../../../../assets/loading.gif" alt=""/>
+        导入{{importedCount}}/{{products.length}}个商品
+      </span>
+      <span *ngIf="!isImporting && isFinished">导入完成</span>      
+    </button>
+    <span *ngIf="!isImporting && isFinished">成功：{{importedCount}}  失败：{{failedCounter}}</span>
+  </p>
 <table>
-  <tr>
-    <td>分类</td><td>名称</td><td>介绍</td><td>价格</td><td>原价</td><td>状态</td><td>库存</td><td>图片</td>
-  </tr>
-  <tr *ngFor="let product of products">
-    <td>{{product.categoryId}}</td>
-    <td>{{product.name}}</td>
-    <td>{{product.content}}</td>
-    <td>{{product.minPrice}}</td>
-    <td>{{product.originalPrice}}</td>
-    <td>{{product.status}}</td>
-    <td>{{product.stores}}</td>
-    <td>{{product.pics}}</td>
-  </tr>
+  <thead>
+    <tr>
+      <th>分类</th>
+      <th>名称</th>
+      <th>介绍</th>
+      <th>价格</th>
+      <th>原价</th>
+      <th>状态</th>
+      <th>库存</th>
+      <th>图片</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of products; index as i">
+      <td>{{product.categoryId}}</td>
+      <td>{{product.name}}</td>
+      <td>{{product.content}}</td>
+      <td>{{product.minPrice}}</td>
+      <td>{{product.originalPrice}}</td>
+      <td>{{product.status}}</td>
+      <td>{{product.stores}}</td>
+      <td>{{product.pics}}</td>
+    </tr>
+  </tbody>
+ 
 </table>
+<br/>
+<div *ngFor="let productInfo of importedProductList">
+  <div>{{productInfo}}</div>
+</div>
 

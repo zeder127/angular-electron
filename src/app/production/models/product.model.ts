@@ -7,4 +7,5 @@ interface Product {
     status: "0" | "1"; //0 上架 1 下架
     stores: string;
     pics?: string[];
+    id?: string;
 }

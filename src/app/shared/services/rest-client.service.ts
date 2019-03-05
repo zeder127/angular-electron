@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { RequestOptions } from '../models/http-request-options.model';
 
@@ -30,8 +30,9 @@ export class RestClientService {
   private mergeOptions(options: RequestOptions){
     let result: RequestOptions;
     result = options ? options : {};    
-    if(result.headers && this._xToken)   
-      result.headers = result.headers.set('X-Token', this._xToken);
+    if(this._xToken)
+      result.headers = (result.headers ? result.headers: new HttpHeaders()).set('X-Token', this._xToken);
+  
     return result;
   }
 }

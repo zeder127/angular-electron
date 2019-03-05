@@ -3,6 +3,7 @@ export interface WeChat {
     createTime: string,
     message: string;
     type: string;
-    name: string;
+    name?: string;
+    originalPrice?: string;
     
 }
